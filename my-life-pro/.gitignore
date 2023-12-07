@@ -22,3 +22,5 @@ yarn-error.log*
 *.sln
 *.sw*
 .hbuilderx/
+env.ts
+package-lock.json
