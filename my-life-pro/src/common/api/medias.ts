@@ -1,20 +1,24 @@
 import { requestApi } from './requestApi'
 
 async function mediaAdd(param : any = {}) {
-	return requestApi('/medias/add', param)
+	return requestApi('/media/add', param)
 }
 
 async function mediaUpdate(param : any = {}) {
-	return requestApi('/medias/update', param)
+	return requestApi('/media/update', param)
 }
 
 async function mediaDelete(param : any = {}) {
-	return requestApi('/medias/delete', param)
+	return requestApi('/media/delete', param)
 }
 
 
 async function mediaUpload(param : any = {}) {
-	return requestApi('/medias/upload', param)
+	return requestApi('/media/upload', param)
+}
+
+async function mediaGet(param : any = {}) {
+	return requestApi('/media/get', param)
 }
 
 
@@ -23,4 +27,5 @@ export {
 	mediaUpdate,
 	mediaDelete,
 	mediaUpload,
+	mediaGet
 }
