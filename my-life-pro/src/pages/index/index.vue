@@ -9,11 +9,11 @@
 				</view>
 				<view>
 					<!-- "http://localhost.my.pangxuejun.cn:8080/public" -->
-						<block v-for="(meida,index) in mediaList" :key="index">
-							<view class="uni-uploader__file">
-								<image class="uni-uploader__img" :src="meida" :data-src="meida"></image>
-							</view>
-						</block>
+					<block v-for="(meida,index) in mediaList" :key="index">
+						<view class="uni-uploader__file">
+							<image class="uni-uploader__img" :src="meida" :data-src="meida"></image>
+						</view>
+					</block>
 				</view>
 			</form>
 		</view>
@@ -36,15 +36,15 @@
 				sizeType: ['压缩', '原图', '压缩或原图'],
 				countIndex: 8,
 				count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-				mediaList: []
+				mediaList: [],
+				param: {
+					"count": 4,
+					"offset": 0
+				}
 			}
 		},
 		onLoad() {
-			const param = {
-				"count": 4,
-				"offset": 0
-			}
-			this.MediaGet(param)
+			this.MediaGet(this.param)
 		},
 		methods: {
 			MediaGet: async function (param : any) {
@@ -62,7 +62,9 @@
 					count: this.imageList.length + this.count[this.countIndex] > 9 ? 9 - this.imageList.length : this.count[this.countIndex],
 					success: (res) => {
 						this.imageList = this.imageList.concat(res.tempFilePaths as any)
-						requestUpload(res.tempFilePaths)
+						requestUpload(res.tempFilePaths).then(()=>{
+							this.MediaGet(this.param)
+						})
 					},
 
 					fail: (err) => {

@@ -56,12 +56,16 @@ async function requestUpload(filePaths : any) {
 					console.log(uploadFileRes.data);
 				}
 			});
+			console.log("requestUpload", res)
+			if (res?.data?.code !== 0) {
+				const message : string = res?.data?.message
+				uni.showToast({
+					title: message,
+					icon: 'none',
+				});
+			}
 		}
-		const message : string = res?.message
-		uni.showToast({
-			title: message,
-			icon: 'none',
-		});
+		return res;
 	} catch (err) {
 		console.log(err)
 		uni.showToast({
