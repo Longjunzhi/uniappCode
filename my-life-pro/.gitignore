@@ -5,6 +5,8 @@ node_modules/
 .env.local
 .env.*.local
 dist/*
+dist/build/*
+!dist/build
 !dist/build/h5
 # Log files
 npm-debug.log*
