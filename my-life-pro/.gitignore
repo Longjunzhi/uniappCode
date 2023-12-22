@@ -1,10 +1,5 @@
 .DS_Store
 node_modules/
-dist/build/mp-weixin
-dist/build/.automator
-dist/dev/mp-weixin
-dist/dev/.sourcemap
-dist/dev/.automator
 
 # local env files
 .env.local
