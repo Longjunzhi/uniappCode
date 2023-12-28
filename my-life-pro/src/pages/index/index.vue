@@ -50,6 +50,7 @@
 			MediaGet: async function (param : any) {
 				const res = await mediaGet(param)
 				console.log("res", JSON.stringify(res))
+				this.mediaList = []
 				for (const m of res.data.media) {
 					var mediaPath = m.path
 					this.mediaList = this.mediaList.concat(mediaPath as any)
@@ -61,6 +62,7 @@
 					sizeType: ['original'],
 					count: this.imageList.length + this.count[this.countIndex] > 9 ? 9 - this.imageList.length : this.count[this.countIndex],
 					success: (res) => {
+						this.mediaList=[]
 						this.imageList = this.imageList.concat(res.tempFilePaths as any)
 						requestUpload(res.tempFilePaths).then(()=>{
 							this.MediaGet(this.param)
